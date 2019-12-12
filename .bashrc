@@ -152,7 +152,7 @@ alias mkdir='mkdir -vp'
 alias mount='mount | column -t'
 alias path='echo -e ${PATH//:/\\n}'
 alias ps='ps -efH'
-alias tree='tree -h --dirsfirst'
+alias tree='tree -a -h --dirsfirst'
 
 # Extract
 extract () {
