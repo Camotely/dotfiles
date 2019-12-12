@@ -1,5 +1,5 @@
 ! Unbind Caps Lock
 clear Lock
 
-! Bind it to virtual function key
-keycode 66 = F13
+! Bind CapsLock to Escape key
+keycode 0x42 = Escape

@@ -2,16 +2,16 @@
 call plug#begin('~/.vim/plugged')
 
 " Markdown preview
-"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 " Sensible defaults
-"Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-sensible'
 
 " Directories on the left
-"Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
 " Status bar
-"Plug 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 
 " Vim-plug end
 call plug#end()
@@ -35,9 +35,3 @@ let g:lightline = {
 
 " Show numbers
 set nu
-
-" Set <F13> to the corresponding output
-set <F13>=^[[25~
-
-" Bind <F13> to Normal mode
-inoremap <F13> <Esc>l
