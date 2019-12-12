@@ -190,5 +190,3 @@ if [ "$?" == 2 ]; then
     ssh-add
   fi
 fi
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash

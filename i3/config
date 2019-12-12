@@ -76,6 +76,10 @@ bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
+# Toggle touchpad
+
+bindsym $mod+p exec bash /home/cole/Git/Scripts/Linux/toggle-touchpad.sh
+
 # focus_follows_mouse no
 
 # change focus
@@ -276,8 +280,8 @@ mode "resize" {
 bindsym $mod+9 exec --no-startup-id blurlock
 
 # Autostart applications
-exec /home/cole/Git/Setup/Scripts/desktop_fix.sh
-exec /home/cole/Git/Setup/Scripts/zenstates.sh
+exec /home/cole/Git/Scripts/Linux/desktop_fix.sh
+exec /home/cole/Git/Scripts/Linux/zenstates.sh
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id nm-applet
