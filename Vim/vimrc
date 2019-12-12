@@ -35,3 +35,7 @@ let g:lightline = {
 
 " Show numbers
 set nu
+
+set <F13>=^[[25~
+
+inoremap <F13> <Esc>l
