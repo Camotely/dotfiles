@@ -1,3 +1,5 @@
+! Unbind Caps Lock
 clear Lock
 
+! Bind it to virtual function key
 keycode 66 = F13

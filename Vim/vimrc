@@ -36,6 +36,8 @@ let g:lightline = {
 " Show numbers
 set nu
 
+" Set <F13> to the corresponding output
 set <F13>=^[[25~
 
+" Bind <F13> to Normal mode
 inoremap <F13> <Esc>l
