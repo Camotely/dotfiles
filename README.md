@@ -8,11 +8,13 @@ ln -s <DIR>/dotfiles/.Xmodmap ~/
 
 This config file will rebind your CapsLock key to Escape.
 
-## user-dirs.dirs
+## user-dirs
 
 ```
 rm ~/.config/user-dirs.dirs
-ln -s <DIR>/dotfiles/user-dirs.dirs ~/.config
+rm ~/.config/user-dirs.conf
+ln -s <DIR>/dotfiles/user-dirs.dirs ~/.config/
+ln -s <DIR>/dotfiles/user-dirs.conf ~/.config/
 ```
 
 This config will allow you to delete common extra folders:
