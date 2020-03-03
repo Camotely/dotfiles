@@ -50,3 +50,6 @@ set ruler
 
 " Auto tabbing
 set smarttab
+
+" Remapping <Esc>
+inoremap jk <Esc>
