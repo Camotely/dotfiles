@@ -1,35 +1,6 @@
 " Disabling viminfo
 set viminfo=
 
-" Vim-plug start
-call plug#begin('~/.vim/plugged')
-
-" Markdown preview
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-
-" Sensible defaults
-Plug 'tpope/vim-sensible'
-
-" Directories on the left
-Plug 'scrooloose/nerdtree'
-
-" Status bar
-Plug 'itchyny/lightline.vim'
-
-" Vim-plug end
-call plug#end()
-
-" Nerd tree keybind
-map <C-n> :NERDTreeToggle<CR>
-
-" Markdown Preview keybind
-map <C-p> :MarkdownPreview<CR>
-
-" Tomorrow Night theme for Lightline
-let g:lightline = {
-	\ 'colorscheme': 'Tomorrow_Night',
-	\ }
-
 " Enable syntax
 syntax on
 
