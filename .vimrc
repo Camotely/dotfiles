@@ -4,6 +4,23 @@ set viminfo=
 " Enable syntax
 syntax on
 
+call plug#begin('~/.vim/plugged')
+
+" Markdown preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+
+" Sensible defaults
+Plug 'tpope/vim-sensible'
+
+" Directories on the left
+Plug 'scrooloose/nerdtree'
+
+" Status bar
+Plug 'itchyny/lightline.vim'
+
+" Vim-plug end
+call plug#end()
+
 " Enable filetype specific indentation based on files in
 " ~/.vim/ftplugin/<filetype>.vim
 filetype plugin indent on
