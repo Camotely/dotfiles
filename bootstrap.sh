@@ -9,9 +9,9 @@ rm -vf $HOME/.Xresources && ln -vs $DIR/.Xresources $HOME/
 rm -vf $HOME/.bashrc && ln -vs $DIR/.bashrc $HOME/
 rm -vf $HOME/.xinitrc && ln -vs $DIR/.xinitrc $HOME/
  
-# Term -vfite
-mkdir -vp $HOME/.config/term -vfite
-rm -vf $HOME/.config/term -vfite/config && ln -vs $DIR/term -vfite.config $HOME/.config/term -vfite/config
+# Termite
+mkdir -vp $HOME/.config/termite
+rm -vf $HOME/.config/termite/config && ln -vs $DIR/termite.config $HOME/.config/termite/config
 
 # i3
 mkdir -vp $HOME/.config/i3
