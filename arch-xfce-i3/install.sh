@@ -92,9 +92,9 @@ fi
 
 ## backgrounds
 if [ -d /usr/share/backgrounds/git ]; then
-    rm -rf /usr/share/backgrounds/git && sudo ln -s $(pwd)/../backgrounds /usr/share/backgrounds/git
+    sudo rm -rf /usr/share/backgrounds/git && sudo ln -s $(pwd)/../backgrounds /usr/share/backgrounds/git
 elif [ -L /usr/share/backgrounds/git ]; then
-    rm -rf /usr/share/backgrounds/git && sudo ln -s $(pwd)/../backgrounds /usr/share/backgrounds/git
+    sudo rm -rf /usr/share/backgrounds/git && sudo ln -s $(pwd)/../backgrounds /usr/share/backgrounds/git
 else
     sudo ln -s $(pwd)/../backgrounds /usr/share/backgrounds/git
 fi
