@@ -91,7 +91,13 @@ else
 fi
 
 ## backgrounds
-sudo ln -s $(pwd)/../backgrounds /usr/share/backgrounds/git
+if [ -d /usr/share/backgrounds/git ]; then
+    rm -rf /usr/share/backgrounds/git && sudo ln -s $(pwd)/../backgrounds /usr/share/backgrounds/git
+elif [ -L /usr/share/backgrounds/git ]; then
+    rm -rf /usr/share/backgrounds/git && sudo ln -s $(pwd)/../backgrounds /usr/share/backgrounds/git
+else
+    sudo ln -s $(pwd)/../backgrounds /usr/share/backgrounds/git
+fi
 
 ## lightdm (slick-greeter)
 if [ -f /etc/lightdm/lightdm.conf ]; then
