@@ -128,5 +128,14 @@ else
     sudo cp $(pwd)/../icons/arch.svg /usr/share/slick-greeter/badges/xfce.svg
 fi
 
+## xsession errors script
+if [ -f /opt/xsession-errors.sh ]; then
+    rm /opt/xsession-errors.sh && ln -s $(pwd)/.xsession-errors.sh /opt/xsession-errors.sh
+elif [ -L /opt/xsession-errors.sh ]; then
+    rm /opt/xsession-errors.sh && ln -s $(pwd)/.xsession-errors.sh /opt/xsession-errors.sh
+else
+    ln -s $(pwd)/.xsession-errors.sh /opt/xsession-errors.sh
+fi
+
 ## Copy mirrorlist
 sudo cp mirrorlist /etc/pacman.d/mirrorlist

@@ -215,6 +215,7 @@ bindsym $mod+9 exec --no-startup-id i3lock
 exec sleep2 && exec --no-startup-id nitrogen --restore
 exec --no-startup-id "compton -b --config ~/.config/compton/compton.conf"
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
+exec --no-startup-id xsession-errors.sh
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
