@@ -91,13 +91,14 @@ else
 fi
 
 ## backgrounds
-if [ -d /usr/share/backgrounds/git ]; then
-    sudo rm -rf /usr/share/backgrounds/git && sudo ln -s $(pwd)/../backgrounds /usr/share/backgrounds/git && setfacl -m u:lightdm:x $(pwd)/../backgrounds
-elif [ -L /usr/share/backgrounds/git ]; then
-    sudo rm -rf /usr/share/backgrounds/git && sudo ln -s $(pwd)/../backgrounds /usr/share/backgrounds/git && setfacl -m u:lightdm:x $(pwd)/../backgrounds
-else
-    sudo ln -s $(pwd)/../backgrounds /usr/share/backgrounds/git && setfacl -m u:lightdm:x $(pwd)/../backgrounds
-fi
+#if [ -d /usr/share/backgrounds/git ]; then
+#    sudo rm -rf /usr/share/backgrounds/git && sudo ln -s $(pwd)/../backgrounds /usr/share/backgrounds/git && setfacl -m u:lightdm:x $(pwd)/../backgrounds
+#elif [ -L /usr/share/backgrounds/git ]; then
+#    sudo rm -rf /usr/share/backgrounds/git && sudo ln -s $(pwd)/../backgrounds /usr/share/backgrounds/git && setfacl -m u:lightdm:x $(pwd)/../backgrounds
+#else
+#    sudo ln -s $(pwd)/../backgrounds /usr/share/backgrounds/git && setfacl -m u:lightdm:x $(pwd)/../backgrounds
+#fi
+sudo cp $(pwd)/../backgrounds/2.jpg /usr/share/backgrounds/
 
 ## lightdm (slick-greeter)
 if [ -f /etc/lightdm/lightdm.conf ]; then
