@@ -55,7 +55,7 @@ THEME_DEPENDENCIES="papirus-icon-theme arc-gtk-theme"
 ROFI_DEPENDENCIES="rofi"
 FIREFOX_DEPENDENCIES="firefox"
 PYWAL_DEPENDENCIES="python-pywal python2 python3"
-EXTRA_DEPENDENCIES="openssh nitrogen compton xfce4-i3-workspaces-plugin-git"
+EXTRA_DEPENDENCIES="openssh nitrogen compton xfce4-i3-workspaces-plugin-git xfce4-battery-plugin"
 DUNST_DEPENDENCIES="dunst"
 SCROT_DEPENDENCIES="scrot"
 
