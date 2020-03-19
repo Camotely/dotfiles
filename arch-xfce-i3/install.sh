@@ -90,5 +90,43 @@ else
     ln -s $(pwd)/xfce4 ~/.config/
 fi
 
+## backgrounds
+sudo ln -s $(pwd)/../backgrounds /usr/share/backgrounds/git
+
+## lightdm (slick-greeter)
+if [ -f /etc/lightdm/lightdm.conf ]; then
+    sudo rm -f /etc/lightdm/lightdm.conf && sudo cp $(pwd)/lightdm/lightdm.conf
+    sudo chown root.root /etc/lightdm/lightdm.conf
+elif [ -L /etc/lightdm/lightdm.conf ]; then
+    sudo rm -f /etc/lightdm/lightdm.conf && sudo cp $(pwd)/lightdm/lightdm.conf
+    sudo chown root.root /etc/lightdm/lightdm.conf
+else
+    sudo cp $(pwd)/lightdm/lightdm.conf
+    sudo chown root.root /etc/lightdm/lightdm.conf
+fi
+
+if [ -f /etc/lightdm/slick-greeter.conf ]; then
+    sudo rm -f /etc/lightdm/slick-greeter.conf && sudo cp $(pwd)/lightdm/slick-greeter.conf
+    sudo chown root.root /etc/lightdm/slick-greeter.conf
+elif [ -L /etc/lightdm/slick-greeter.conf ]; then
+    sudo rm -f /etc/lightdm/slick-greeter.conf && sudo cp $(pwd)/lightdm/slick-greeter.conf
+    sudo chown root.root /etc/lightdm/slick-greeter.conf
+else
+    sudo cp $(pwd)/lightdm/slick-greeter.conf
+    sudo chown root.root /etc/lightdm/slick-greeter.conf
+fi
+
+## slick-greeter xfce icon
+if [ -f /usr/share/slick-greeter/badges/xfce.svg ]; then
+    sudo mv /usr/share/slick-greeter/badges/xfce.svg /usr/share/slick-greeter/badges/xfce.svg.bak
+    sudo cp $(pwd)/../icons/arch.svg /usr/share/slick-greeter/badges/xfce.svg
+elif [ -L /usr/share/slick-greeter/badges/xfce.svg ]; then
+    sudo mv /usr/share/slick-greeter/badges/xfce.svg /usr/share/slick-greeter/badges/xfce.svg
+.bak
+    sudo cp $(pwd)/../icons/arch.svg /usr/share/slick-greeter/badges/xfce.svg
+else
+    sudo cp $(pwd)/../icons/arch.svg /usr/share/slick-greeter/badges/xfce.svg
+fi
+
 ## Copy mirrorlist
 sudo cp mirrorlist /etc/pacman.d/mirrorlist

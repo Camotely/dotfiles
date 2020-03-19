@@ -35,7 +35,7 @@ bindsym $mod+d exec --no-startup-id rofi -show run
 
 # Start Applications
 bindsym $mod+Shift+Return exec firefox
-bindsym $mod+e exec thunar
+bindsym $mod+e exec pcmanfm
 bindsym $mod+Shift+F3 exec pcmanfm
 bindsym $mod+Ctrl+F3 exec pcmanfm_pkexec
 
@@ -212,7 +212,7 @@ mode "resize" {
 bindsym $mod+9 exec --no-startup-id i3lock
 
 # Autostart applications
-exec --no-startup-id nitrogen --restore
+exec sleep2 && exec --no-startup-id nitrogen --restore
 exec --no-startup-id "compton -b --config ~/.config/compton/compton.conf"
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 
