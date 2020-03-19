@@ -1,5 +1,0 @@
-! Unbind Caps Lock
-clear Lock
-
-! Bind CapsLock to Escape key
-keycode 0x42 = Escape
