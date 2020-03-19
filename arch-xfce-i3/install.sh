@@ -95,24 +95,24 @@ sudo ln -s $(pwd)/../backgrounds /usr/share/backgrounds/git
 
 ## lightdm (slick-greeter)
 if [ -f /etc/lightdm/lightdm.conf ]; then
-    sudo rm -f /etc/lightdm/lightdm.conf && sudo cp $(pwd)/lightdm/lightdm.conf
+    sudo rm -f /etc/lightdm/lightdm.conf && sudo cp $(pwd)/lightdm/lightdm.conf /etc/lightdm/
     sudo chown root.root /etc/lightdm/lightdm.conf
 elif [ -L /etc/lightdm/lightdm.conf ]; then
-    sudo rm -f /etc/lightdm/lightdm.conf && sudo cp $(pwd)/lightdm/lightdm.conf
+    sudo rm -f /etc/lightdm/lightdm.conf && sudo cp $(pwd)/lightdm/lightdm.conf /etc/lightdm/
     sudo chown root.root /etc/lightdm/lightdm.conf
 else
-    sudo cp $(pwd)/lightdm/lightdm.conf
+    sudo cp $(pwd)/lightdm/lightdm.conf /etc/lightdm/
     sudo chown root.root /etc/lightdm/lightdm.conf
 fi
 
 if [ -f /etc/lightdm/slick-greeter.conf ]; then
-    sudo rm -f /etc/lightdm/slick-greeter.conf && sudo cp $(pwd)/lightdm/slick-greeter.conf
+    sudo rm -f /etc/lightdm/slick-greeter.conf && sudo cp $(pwd)/lightdm/slick-greeter.conf /etc/lightdm/
     sudo chown root.root /etc/lightdm/slick-greeter.conf
 elif [ -L /etc/lightdm/slick-greeter.conf ]; then
-    sudo rm -f /etc/lightdm/slick-greeter.conf && sudo cp $(pwd)/lightdm/slick-greeter.conf
+    sudo rm -f /etc/lightdm/slick-greeter.conf && sudo cp $(pwd)/lightdm/slick-greeter.conf /etc/lightdm/
     sudo chown root.root /etc/lightdm/slick-greeter.conf
 else
-    sudo cp $(pwd)/lightdm/slick-greeter.conf
+    sudo cp $(pwd)/lightdm/slick-greeter.conf /etc/lightdm/
     sudo chown root.root /etc/lightdm/slick-greeter.conf
 fi
 
