@@ -55,15 +55,6 @@ while true; do
     esac
 done
 
-while true; do
-    read -p "Is this an ? (y/n) " LAPTOP
-    case $LAPTOP in
-        y|Y|Yes|yes|YES ) break;;
-        n|N|No|no|NO ) break;;
-        * ) echo "Please answer yes or no.";;
-    esac
-done
-
 SUDO_DEPENDENCIES="sudo"
 X_DEPENDENCIES="xorg-xinit xorg-server"
 GENERAL_DEPENDENCIES="firefox code xrandr man lightdm vim neofetch htop git"
