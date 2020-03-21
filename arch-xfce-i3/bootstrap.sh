@@ -46,43 +46,59 @@ function echo_yellow(){
 
 # Packages to install
 
+while true; do
+    read -p "Is this a laptop? (y/n) " LAPTOP
+    case $LAPTOP in
+        y|Y|Yes|yes|YES ) break;;
+        n|N|No|no|NO ) break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+while true; do
+    read -p "Is this an ? (y/n) " LAPTOP
+    case $LAPTOP in
+        y|Y|Yes|yes|YES ) break;;
+        n|N|No|no|NO ) break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
 SUDO_DEPENDENCIES="sudo"
-AUDIO_DEPENDENCES="pulseaudio pavucontrol"
-GIT_DEPENDENCIES="git"
-VIM_DEPENDENCIES="vim"
 X_DEPENDENCIES="xorg-xinit xorg-server"
-YAY_DEPENDENCINES="base-devel"
-I3_DEPENDENCIES="i3-gaps i3lock"
-THEME_DEPENDENCIES="papirus-icon-theme arc-gtk-theme"
-ROFI_DEPENDENCIES="rofi"
-FIREFOX_DEPENDENCIES="firefox"
-PYWAL_DEPENDENCIES="python-pywal python2 python3"
-EXTRA_DEPENDENCIES="openssh nitrogen compton xfce4-i3-workspaces-plugin-git xfce4-battery-plugin"
-DUNST_DEPENDENCIES="dunst"
-SCROT_DEPENDENCIES="scrot"
+GENERAL_DEPENDENCIES="firefox code xrandr man lightdm vim neofetch htop git"
+NETWORK_DEPENDENCIES="network-manager-applet rsync traceroute bind-tools nmap net-tools networkmanager openssh"
+TOOL_DEPENDENCIES="pacman-contrib base-devel bash-completion usbutils lsof dmidecode dialog zip unzip unrar p7zip lzop python3 python2" 
+SOUND_DEPENDENCIES="alsa-utils alsa-plugins pulseaudio pulseaudio-alsa pavucontrol"
+FILESYSTEM_DEPENDENCIES="snapper dosfstools ntfs-3g btrfs-progs exfat-utils gptfdisk autofs sshfs nfs-utils"
+PRINT_DEPENDENCIES="cups"
+I3_DEPENDENCIES="i3-gaps rofi python-pywal nitrogen feh compton dunst scrot termite"
+XFCE_DEPENDENCIES="exo garcon tumbler xfce4-appfinder xfce4-panel xfce4-power-manager xfce4-session xfce4-settings xfconf xfce4-battery-plugin"
+FONT_DEPENDENCIES="font-bh-ttf font-bitstream-speedo gsfonts sdl_ttf ttf-bitstream-vera ttf-dejavu ttf-liberation xorg-fonts-type1"
+LAPTOP_DEPENDENCIES="tlp"
+INTEL_DEPENDENCIES="intel-ucode"
+AMD_DEPENDENCIES="amd-ucode"
+AUR_DEPENDENCIES="i3lock-color lightdm-slick-greeter xfce4-i3-workspaces-plugin-git"
 
 DEPENDENCIES="\
- $SUDO_DEPENDENCIES \
- $AUDIO_DEPENDENCIES \
- $GIT_DEPENDENCIES \
- $VIM_DEPENDENCIES \
- $X_DEPENDENCIES \
- $YAY_DEPENDENCIES \
- $I3_DEPENDENCIES \
- $THEME_DEPENDENCIES \
- $ROFI_DEPENDENCIES \
- $FIREFOX_DEPENDENCES \
- $PYWAL_DEPENDENCIES \
- $EXTRA_DEPENDENCIES \
- $DUNST_DEPENDENCIES \
- $SCROT_DEPENDENCIES
+  $SUDO_DEPENDENCIES \
+  $X_DEPENDENCIES \
+  $GENERAL_DEPENDENCIES \
+  $NETWORK_DEPENDENCIES \
+  $TOOL_DEPENDENCIES \
+  $SOUND_DEPENDENCIES \
+  $FILESYSTEM_DEPENDENCIES \
+  $PRINT_DEPENDENCIES \
+  $I3_DEPENDENCIES \
+  $XFCE_DEPENDENCIES \
+  $FONT_DEPENDENCIES \
 
 "
 
 POLYBAR_DEPENDENCIES=""
 
 YAY_INSTALL="\
- $POLYBAR_DEPENDENCIES \
+ $AUR_DEPENDENCIES \
 "
 
 # ---
@@ -125,28 +141,32 @@ function cleanup(){
 # ---
 
 # Setting up X dotfiles
-function configure_x(){
+function configure_dotfiles(){
     echo_green "Configuring X"
-    sudo -u $NEW_USER bash -c "rm -vf ~/.Xmodmap; ln -vs $(pwd)/.Xmodmap ~/"
-    sudo -u $NEW_USER bash -c "rm -vf ~/.xinitrc; ln -vs $(pwd)/.xinitrc ~/"
+    sudo -u $NEW_USER bash -c "./install.sh"
 }
+# function configure_x(){
+#     echo_green "Configuring X"
+#     sudo -u $NEW_USER bash -c "rm -vf ~/.Xmodmap; ln -vs $(pwd)/.Xmodmap ~/"
+#     sudo -u $NEW_USER bash -c "rm -vf ~/.xinitrc; ln -vs $(pwd)/.xinitrc ~/"
+# }
 
-function configure_dunst(){
-    echo_green "Configuring dunst" 
-    sudo -u $NEW_USER bash -c 'mkdir -vp ~/.config/dunst'
-    sudo -u $NEW_USER bash -c "rm -vf ~/.config/dunst/dunstrc; ln -vs $(pwd)/dunstrc ~/.config/dunst/"
-}
+# function configure_dunst(){
+#     echo_green "Configuring dunst" 
+#     sudo -u $NEW_USER bash -c 'mkdir -vp ~/.config/dunst'
+#     sudo -u $NEW_USER bash -c "rm -vf ~/.config/dunst/dunstrc; ln -vs $(pwd)/dunstrc ~/.config/dunst/"
+# }
 
-function configure_bashrc(){
-    echo_green "Configuring bash"
-    sudo -u $NEW_USER bash -c "rm -vf ~/.bashrc; ln -vs $(pwd)/.bashrc ~/"
-}
+# function configure_bashrc(){
+#     echo_green "Configuring bash"
+#     sudo -u $NEW_USER bash -c "rm -vf ~/.bashrc; ln -vs $(pwd)/.bashrc ~/"
+# }
 
-function configure_vim(){
-    echo_green "Configuring vim..."
-    sudo -u $NEW_USER bash -c 'curl -sfLo ~/.vim/autoload/plug.vim --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"'
-    sudo -u $NEW_USER bash -c "rm -vf ~/.vimrc; ln -vs $(pwd)/.vimrc ~/"
-    sudo -u $NEW_USER bash -c 'vim ~/.vimrc +PlugInstall +q +q'
+# function configure_vim(){
+#     echo_green "Configuring vim..."
+#     sudo -u $NEW_USER bash -c 'curl -sfLo ~/.vim/autoload/plug.vim --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"'
+#     sudo -u $NEW_USER bash -c "rm -vf ~/.vimrc; ln -vs $(pwd)/.vimrc ~/"
+#     sudo -u $NEW_USER bash -c 'vim ~/.vimrc +PlugInstall +q +q'
 }
 
 function configure_git(){
@@ -155,23 +175,23 @@ function configure_git(){
     sudo -u $NEW_USER bash -c 'git config --global user.name "CovertLemur"'
 }
 
-function configure_xfce(){
-    sudo -u $NEW_USER bash -c "rm -vrf ~/.config/xfce4; ln -vs $(pwd)/xfce4 ~/.config/"
-}
+#function configure_xfce(){
+#    sudo -u $NEW_USER bash -c "rm -vrf ~/.config/xfce4; ln -vs $(pwd)/xfce4 ~/.config/"
+#}
 
-function configure_i3(){
-    sudo -u $NEW_USER bash -c 'mkdir -vp ~/.config/i3'
-    sudo -u $NEW_USER bash -c "rm -vf ~/.config/i3/config; ln -vs $(pwd)/i3/config ~/.config/i3/"
-}
+#function configure_i3(){
+#    sudo -u $NEW_USER bash -c 'mkdir -vp ~/.config/i3'
+#    sudo -u $NEW_USER bash -c "rm -vf ~/.config/i3/config; ln -vs $(pwd)/i3/config ~/.config/i3/"
+#}
 
-function configure_pacman(){
-    cp mirrorlist /etc/pacman.d/mirrorlist
-}
+#function configure_pacman(){
+#    cp mirrorlist /etc/pacman.d/mirrorlist
+#}
 
-function configure_compton(){
-    sudo -u $NEW_USER bash -c 'mkdir -vp ~/.config/compton'
-    sudo -u $NEW_USER bash -c 'rm -vf ~/.config/compton/compton.conf; ln -vs $(pwd)/compton.conf ~/.config/compton/'
-}
+#function configure_compton(){
+#    sudo -u $NEW_USER bash -c 'mkdir -vp ~/.config/compton'
+#    sudo -u $NEW_USER bash -c 'rm -vf ~/.config/compton/compton.conf; ln -vs $(pwd)/compton.conf ~/.config/compton/'
+#}
 # ---
 
 function prepare_opt(){
@@ -204,7 +224,12 @@ function set_locale(){
     echo_green "Setting locale"
     sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g' /etc/locale.gen
     echo "LANG=en_US.UTF-8" > /etc/locale.conf
+    echo "LC_COLLATE=C" >> /etc/locale.conf
     locale-gen
+}
+
+function set_keymap(){
+    echo "KEYMAP=us" > /etc/vsconsole.conf
 }
 
 function set_hostname(){
@@ -230,12 +255,29 @@ function init_keyring(){
 function pre_install(){
     set_timezone
     set_locale
+    set_keymap
     set_hostname
     init_keyring
 }
 
 function installing_with_pacman(){
-    pacman -Sy $DEPENDENCIES --noconfirm --color=always
+    pacman -Sy $DEPENDENCIES --needed --noconfirm --color=always
+
+    if [[ $LAPTOP == y || $LAPTOP == Y || $LAPTOP == Yes || $LAPTOP == YES ]]; then
+        pacman -Sy $LAPTOP_DEPENDENCIES --needed --noconfirm --color=always
+    else
+        pacman -Sy $DESKTOP_DEPENDENCIES --needed --noconfirm --color=always
+    fi
+
+    CPUMAN=$(lscpu | grep "Vendor ID:" | cut -d':' -f2 | awk '{$1=$1};1')
+    if [[ $CPUMAN == AuthenticAMD ]]; then
+        pacman -Sy $AMD_DEPENDENCIES --needed --noconfirm --color=always
+    elif [[ $CPUMAN == GenuineIntel ]]; then
+        pacman -Sy $INTEL_DEPENDENCIES --needed --noconfirm --color=always
+    fi
+
+    systemctl enable lightdm
+    systemctl enable NetworkManager
 }
 
 function installing_with_yay(){
@@ -263,12 +305,13 @@ pre_install
 create_new_user
 configure_pacman
 installing_with_pacman
-configure_x
-configure_dunst
-configure_bashrc
-configure_vim
+configure_dotfiles
+#configure_x
+#configure_dunst
+#configure_bashrc
+#onfigure_vim
 configure_git
-configure_compton
+#configure_compton
 prepare_opt
 
 install_yay
