@@ -49,6 +49,7 @@
     <property name="plugin-10" type="string" value="notification-plugin"/>
     <property name="plugin-12" type="string" value="clock">
       <property name="digital-format" type="string" value="%H:%m"/>
+      <property name="timezone" type="string" value="EST5EDT"/>
     </property>
     <property name="plugin-13" type="string" value="separator">
       <property name="style" type="uint" value="0"/>

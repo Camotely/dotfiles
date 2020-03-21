@@ -5,6 +5,8 @@
 #
 # This script is made to help setup and install the tools needed for a usable
 # i3wm Arch distribution.
+#
+# DISCLAIMER: This bootstrap is being reworked!
 
 # Username given as argument to script
 NEW_USER=$1

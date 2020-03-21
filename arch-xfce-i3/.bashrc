@@ -128,6 +128,7 @@ alias mkdir='mkdir -vp'
 alias path='echo -e ${PATH//:/\\n}'
 alias ps='ps -efH'
 alias tree='tree -a -h --dirsfirst -I ".git"'
+alias ssh='TERM=xterm ssh'
 
 # Extract
 extract () {
