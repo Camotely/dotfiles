@@ -133,7 +133,7 @@ function create_new_user(){
     echo "$NEW_USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
     chown $NEW_USER:$NEW_USER /home/$NEW_USER
-    chown -R $NEW_USER:$NEW_USER $(pwd)
+    chown -R $NEW_USER:$NEW_USER $(pwd)/..
     mv $(pwd) /home/$NEW_USER/Documents/dotfiles
     cd /home/$NEW_USER/Documents/dotfiles
 }
