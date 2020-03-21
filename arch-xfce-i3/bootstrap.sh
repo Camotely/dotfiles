@@ -44,6 +44,23 @@ function echo_yellow(){
 
 # ---
 
+if [ "$1" == "" ]
+then
+    echo_red "You must supply a username to use."
+    echo "usage: $0 <new_username> <hostname> <git_email>"
+    exit
+elif [ "$2" == "" ]
+then
+    echo_red "You must supply a hostname to use."
+    echo "usage: $0 <new_username> <hostname> <git_email>"
+    exit
+elif [ "$3" == "" ]
+then
+    echo_red "You must supply an email to use."
+    echo "usage: $0 <new_username> <hostname> <git_email>"
+    exit
+fi
+
 # Packages to install
 
 while true; do
@@ -275,22 +292,7 @@ function installing_with_yay(){
     sudo -u $NEW_USER bash -c "yay -Sy $YAY_INSTALL --noconfirm"
 }
 
-if [ "$1" == "" ]
-then
-    echo_red "You must supply a username to use."
-    echo "usage: $0 <new_username> <hostname> <git_email>"
-    exit
-elif [ "$2" == "" ]
-then
-    echo_red "You must supply a hostname to use."
-    echo "usage: $0 <new_username> <hostname> <git_email>"
-    exit
-elif [ "$3" == "" ]
-then
-    echo_red "You must supply an email to use."
-    echo "usage: $0 <new_username> <hostname> <git_email>"
-    exit
-fi
+
 
 pre_install
 create_new_user
