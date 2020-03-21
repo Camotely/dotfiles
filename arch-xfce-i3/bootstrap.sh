@@ -158,7 +158,7 @@ function configure_dotfiles(){
 #     sudo -u $NEW_USER bash -c 'curl -sfLo ~/.vim/autoload/plug.vim --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"'
 #     sudo -u $NEW_USER bash -c "rm -vf ~/.vimrc; ln -vs $(pwd)/.vimrc ~/"
 #     sudo -u $NEW_USER bash -c 'vim ~/.vimrc +PlugInstall +q +q'
-}
+#}
 
 function configure_git(){
     sudo -u $NEW_USER bash -c 'git config --global core.editor "vim"'
