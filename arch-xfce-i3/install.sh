@@ -97,6 +97,7 @@ elif [ -L ~/.config/user-dirs.dirs ]; then
     rm -f ~/.config/user-dirs.dirs && ln -s $(pwd)/user-dirs.dirs ~/.config/
 else
     ln -s $(pwd)/user-dirs.dirs ~/.config/
+fi
 
 if [ -f ~/.config/user-dirs.conf ]; then
     rm -f ~/.config/user-dirs.conf && ln -s $(pwd)/user-dirs.conf ~/.config/
@@ -104,6 +105,7 @@ elif [ -L ~/.config/user-dirs.conf ]; then
     rm -f ~/.config/user-dirs.conf && ln -s $(pwd)/user-dirs.conf ~/.config/
 else
     ln -s $(pwd)/user-dirs.conf ~/.config/
+fi
 
 
 ## backgrounds

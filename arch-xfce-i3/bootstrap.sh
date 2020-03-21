@@ -103,8 +103,6 @@ DEPENDENCIES="\
 
 "
 
-POLYBAR_DEPENDENCIES=""
-
 YAY_INSTALL="\
  $AUR_DEPENDENCIES \
 "
@@ -121,7 +119,7 @@ function create_new_user(){
     then
         echo_green "Creating new user $COLOR_BLUE$NEW_USER"
 
-        mkdir /home/$NEW_USER
+        mkdir -p /home/$NEW_USER/Documents /home/$NEW_USER/Downloads
         useradd $NEW_USER
         echo_yellow "Please set the password for $COLOR_BLUE$NEW_USER:"
         passwd $NEW_USER
@@ -136,8 +134,8 @@ function create_new_user(){
 
     chown $NEW_USER:$NEW_USER /home/$NEW_USER
     chown -R $NEW_USER:$NEW_USER $(pwd)
-    mv $(pwd) /home/$NEW_USER/dotfiles
-    cd /home/$NEW_USER/dotfiles
+    mv $(pwd) /home/$NEW_USER/Documents/dotfiles
+    cd /home/$NEW_USER/Documents/dotfiles
 }
 
 # Cleaning up the sudo without password setup
