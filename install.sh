@@ -46,8 +46,9 @@ else
     ln -s $(pwd)/user-dirs.conf ~/.config/
 fi
 
-## firefox
+rmdir $HOME/Desktop $HOME/Music $HOME/Pictures $HOME/Public $HOME/Templates $HOME/Videos
 
+## firefox
 ff=$(ls $HOME/.mozilla/firefox | egrep *.default-release)
 
 if [ -z $ff ]; then
