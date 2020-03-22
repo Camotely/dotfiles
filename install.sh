@@ -45,3 +45,17 @@ elif [ -L ~/.config/user-dirs.conf ]; then
 else
     ln -s $(pwd)/user-dirs.conf ~/.config/
 fi
+
+## firefox
+
+ff=$(ls $HOME/.mozilla/firefox | egrep *.default-release)
+
+if [ -z $ff ]; then
+    firefox &
+    sleep 5
+    killall firefox
+    ff=$(ls $HOME/.mozilla/firefox | egrep *.default-release)
+    ln -vs $(pwd)/user.js $HOME/.mozilla/firefox/$ff
+elif [ ! -z $ff ]; then
+    ln -vs $(pwd)/user.js $HOME/.mozilla/firefox/$ff
+fi
