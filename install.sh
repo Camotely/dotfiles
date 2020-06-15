@@ -2,6 +2,9 @@
 
 # Quick bash script to link dotfiles
 
+# directory removal
+(rmdir "$HOME"/Desktop "$HOME"/Music "$HOME"/Pictures "$HOME"/Public "$HOME"/Templates "$HOME"/Videos) 2>/dev/null
+
 ## .vimrc
 if [ -f ~/.vimrc ]; then
     rm -f ~/.vimrc && ln -s "$(pwd)"/.vimrc ~/
@@ -46,12 +49,14 @@ else
     ln -s "$(pwd)"/user-dirs.conf ~/.config/
 fi
 
-rmdir "$HOME"/Desktop "$HOME"/Music "$HOME"/Pictures "$HOME"/Public "$HOME"/Templates "$HOME"/Videos
-
 ## firefox
 ff=$(find "$HOME"/.mozilla/firefox -name "*release")
 
-if [ -z "$ff" ]; then
+if [ -f "$ff"/user.js ]; then
+    rm -f "$ff"/user.js && ln -s "$(pwd)"/user.js "$ff"
+elif [ -L "$ff"/user.js ]; then
+    rm -f "$ff"/user.js && ln -s "$(pwd)"/user.js "$ff"
+elif [ -z "$ff" ]; then
     firefox &
     sleep 5
     killall firefox
@@ -59,4 +64,39 @@ if [ -z "$ff" ]; then
     ln -s "$(pwd)"/user.js "$ff"
 elif [ -n "$ff" ]; then
     ln -s "$(pwd)"/user.js "$ff"
+fi
+
+## bash_profile
+if [ ~/.bash_profile ]; then
+    rm -f ~/.bash_profile && ln -s "$(pwd)"/.bash_profile ~/
+elif [ -L ~/.bash_profile ]; then
+    rm -f ~/.bash_profile && ln -s "$(pwd)"/.bash_profile ~/
+else
+    ln -s "$(pwd)"/.bash_profile
+fi
+
+## i3status
+if [ ! -d ~/.config/i3status ]; then
+    mkdir -p ~/.config/i3status
+fi
+
+if [ -f ~/.config/i3status/config ]; then
+    rm -f ~/.config/i3status/config && ln -s "$(pwd)"/i3status.conf ~/.config/i3status/config
+elif [ -L ~/.config/i3status/config ]; then
+    rm -f ~/.config/i3status/config && ln -s "$(pwd)"/i3status.conf ~/.config/i3status/config
+else
+    ln -s "$(pwd)"/i3status.conf ~/.config/i3status/config
+fi
+
+## sway
+if [ ! -d ~/.config/sway ]; then
+    mkdir -p ~/.config/sway
+fi
+
+if [ -f ~/.config/sway/config ]; then
+    rm -f ~/.config/sway/config && ln -s "$(pwd)"/sway.conf ~/.config/sway/config
+elif [ -L ~/.config/sway/config ]; then
+    rm -f ~/.config/sway/config && ln -s "$(pwd)"/sway.conf ~/.config/sway/config
+else
+    ln -s "$(pwd)"/sway.conf ~/.config/sway/config
 fi
