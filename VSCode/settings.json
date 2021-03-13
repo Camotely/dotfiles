@@ -1,0 +1,9 @@
+{
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "file.autoSave": "afterDelay",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "files.autoSave": "afterDelay"
+}
+
